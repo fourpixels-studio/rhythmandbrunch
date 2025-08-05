@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block body %}
+<main class="container-fluid px-0" style="padding-top: 4.625rem;">
+    <img src="{{ event.get_poster }}" alt="{{ event.name }}'s Poster" class="img-fluid w-100 d-sm-block d-md-none">
+    <div class="container px-3">
+        <div class="row mt-5 justify-content-between align-items-start">
+            <div class="col-sm-12 col-lg-5">
+                <img src="{{ event.get_poster }}" alt="{{ event.name }}'s Poster" class="img-fluid w-100 rounded-3 d-none d-lg-block">
+            </div>
+            <div class="col-sm-12 col-lg-7">
+                <h1>{{ event.name }}</h1>
+                <p class="lead mb-0">🗓️ {{ event.date }}</p>
+                <p class="mb-0 lead">📍 {{ event.venue }}, {{ event.location }}</p>
+                <p class="mb-0 lead">🕛 {{ event.start_time }} - {{ event.end_time }}</p>
+                <hr class="text-muted">
+                <div>{{ event.description|linebreaks }}</div>
+                {% if event.get_schedule %}
+                <a href="{{ event.view_schedule }}" class="hover-underline text-primary">View Full Schedule</a>
+                {% endif %}
+                {% if event.is_upcoming == 'Upcoming' %}
+                <a href="{{ event.get_ticket_link|safe }}" class="btn btn-primary w-100 btn-lg mt-4 d-none d-lg-block">Get Ticket</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if event.is_upcoming == 'Upcoming' %}
+    <div class="bg-white p-3 fixed-bottom d-lg-none">
+        <a href="{{ event.get_ticket_link|safe }}" class="btn btn-primary w-100 btn-lg">Get Ticket</a>
+    </div>
+    {% endif %}
+</main>
+{% endblock %}

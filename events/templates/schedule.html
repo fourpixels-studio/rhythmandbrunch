@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<style>
+.time-label {
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    transform: rotate(-3deg);
+    transform-origin: bottom left;
+}
+.unskew {
+    display: inline-block;
+    transform: skew(3deg);
+}
+</style>
+<main class="container-fluid">
+    <div class="container px-1 py-5">
+        <div class="row gy-4 mt-4 justify-content-evenly">
+            <div class="container py-4">
+                <div class="row g-4 justify-content-between">
+                    <div class="col-12">
+                        <div class="bg-black p-4 text-center text-white rounded-2">
+                            <h1>{{ event.name }} Schedule</h1>
+                        </div>
+                    </div>
+                    {% for performance in event.get_schedule %}
+                    <div class="col-sm-12 col-lg-6">
+                        <div class="bg-light p-4 rounded-2">
+                            <div class="time-label"><span class="unskew">{{ performance.start_time|date:"g:ia" }} - {{ performance.end_time|date:"g:ia" }}</span></div>
+                            <h6 class="lead">{{ performance.performer }}</h6>
+                            <p class="mb-0">{{ performance.performance_description }}</p>
+                            <img src="{{ performance.get_image }}" alt="{{ performance.performer }}'s Image" class="mt-3 img-fluid w-100 rounded-2">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
