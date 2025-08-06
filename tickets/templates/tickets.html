@@ -4,22 +4,22 @@
 {% load humanize %}
 <main class="container-fluid">
     <div class="container px-1 py-5">
-        <div class="row gy-4 mt-4 justify-content-between">
+        <div class="row mt-4">
             <div class="col-12">
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col-sm-12 col-lg-5">
                         <h1 data-aos="fade-up" data-aos-delay="50">Tickets</h1>
                         <p data-aos="fade-up" data-aos-delay="70">Available tickets for {{ latest_event.name }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-sm-12 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                 <img src="{{ latest_event.get_poster }}" alt="{{ latest_event.name }}'s Poster" class="img-fluid w-100">
             </div>
             <div class="col-sm-12 col-lg-8">
                 {% for ticket in latest_event.get_tickets %}
                 {% if forloop.counter|divisibleby:"2" %}
-                <div class="bg-black rounded-0 p-3 mb-3" data-aos="fade-left" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">
+                <div class="bg-black rounded-0 p-3 mb-3" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">
                     <div class="row justify-content-between align-items-center">
                         <div class="col-4 col-lg-4">
                             <div class="d-flex flex-column gap-2 align-items-start">
@@ -41,16 +41,16 @@
                                 <h6 class="my-0 text-white">{{ ticket.price|floatformat:0|intcomma }}</h6>
                                 <p class="my-0 text-white fs-primary">Ksh</p>
                                 {% if ticket.sold_out %}
-                                <button role="button" class="btn btn-outline-primary" data-aos="fade-left" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600" disabled><s>Sold Out</s></button>
+                                <button role="button" class="btn btn-outline-primary" data-aos="fade-right" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600" disabled><s>Sold Out</s></button>
                                 {% else%}
-                                <a href="{{ ticket.ticket_link }}" target="_blank" class="btn btn-primary" data-aos="fade-left" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">Book Ticket</a>
+                                <a href="{{ ticket.ticket_link }}" target="_blank" class="btn btn-primary" data-aos="fade-right" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">Book Ticket</a>
                                 {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
                 {% else %}
-                <div class="border border-black rounded-0 p-3 mb-3" data-aos="fade-left" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">
+                <div class="border border-black rounded-0 p-3 mb-3" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">
                     <div class="row justify-content-between align-items-center">
                         <div class="col-4 col-lg-4">
                             <div class="d-flex flex-column gap-2 align-items-start">
@@ -72,9 +72,9 @@
                                 <h6 class="my-0">{{ ticket.price|floatformat:0|intcomma }}</h6>
                                 <p class="my-0 fs-primary">Ksh</p>
                                 {% if ticket.sold_out %}
-                                <button role="button" class="btn btn-outline-primary" data-aos="fade-left" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600" disabled><s>Sold Out</s></button>
+                                <button role="button" class="btn btn-outline-primary" data-aos="fade-right" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600" disabled><s>Sold Out</s></button>
                                 {% else%}
-                                <a href="{{ ticket.ticket_link }}" target="_blank" class="btn btn-primary" data-aos="fade-left" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">Book Ticket</a>
+                                <a href="{{ ticket.ticket_link }}" target="_blank" class="btn btn-primary" data-aos="fade-right" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">Book Ticket</a>
                                 {% endif %}
                             </div>
                         </div>
