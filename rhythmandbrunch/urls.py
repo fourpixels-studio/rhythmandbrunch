@@ -23,6 +23,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("frontend.urls")),
     path("", include("events.urls")),
+    path("tickets/", include("tickets.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = "Rythm & Brunch Admin"
