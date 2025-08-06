@@ -1,8 +1,10 @@
 <a href="{{ event.get_url }}" class="no-link">
-    <img src="{{ event.get_poster }}" alt="{{ event.name }}'s Poster" class="img-fluid rounded-2 hover">
-    <p class="text-secondary mb-0 mt-3">{{ event.date|date:"j M Y" }}</p>
-    <p class="fw-bold wrap-text hover-underline mb-0">{{ event.name }}, {{ event.venue }}</p>
-    {% if event.is_upcoming == 'Upcoming' %}
-    <button role="button" class="btn btn-primary w-100 mt-3">Get Ticket</button>
-    {% endif %}
+    <div data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">
+        <img src="{{ event.get_poster }}" alt="{{ event.name }}'s Poster" class="img-fluid rounded-2 hover">
+        <p class="text-secondary mb-0 mt-3">{{ event.date|date:"j M Y" }}</p>
+        <p class="fw-bold wrap-text hover-underline mb-0">{{ event.name }}, {{ event.venue }}</p>
+        {% if event.is_upcoming == 'Upcoming' %}
+        <button role="button" class="btn btn-primary w-100 mt-3">Get Ticket</button>
+        {% endif %}
+    </div>
 </a>

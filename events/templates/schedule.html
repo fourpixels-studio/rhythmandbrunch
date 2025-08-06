@@ -25,11 +25,11 @@
                 <div class="row g-4 justify-content-between">
                     <div class="col-12">
                         <div class="bg-black p-4 text-center text-white rounded-2">
-                            <h1>{{ event.name }} Schedule</h1>
+                            <h1 data-aos="fade-right" data-aos-delay="70" data-aos-duration="600">{{ event.name }} Schedule</h1>
                         </div>
                     </div>
                     {% for performance in event.get_schedule %}
-                    <div class="col-sm-12 col-lg-6">
+                    <div class="col-sm-12 col-lg-6" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">
                         <div class="bg-light p-4 rounded-2">
                             <div class="time-label"><span class="unskew">{{ performance.start_time|date:"g:ia" }} - {{ performance.end_time|date:"g:ia" }}</span></div>
                             <h6 class="lead">{{ performance.performer }}</h6>

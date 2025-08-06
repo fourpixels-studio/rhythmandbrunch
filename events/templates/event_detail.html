@@ -1,24 +1,24 @@
 {% extends 'base.html' %}
 {% block body %}
-<main class="container-fluid px-0" style="padding-top: 4.625rem;">
-    <img src="{{ event.get_poster }}" alt="{{ event.name }}'s Poster" class="img-fluid w-100 d-sm-block d-md-none">
+<main class="container-fluid px-0" style="padding-top: 4rem;">
+    <img src="{{ event.get_poster }}" alt="{{ event.name }}'s Poster" class="img-fluid w-100 d-sm-block d-md-none" data-aos="fade-in" data-aos-delay="50" data-aos-duration="600">
     <div class="container px-3">
         <div class="row mt-5 justify-content-between align-items-start">
-            <div class="col-sm-12 col-lg-5">
+            <div class="col-sm-12 col-lg-5" data-aos="fade-right" data-aos-delay="50" data-aos-duration="600">
                 <img src="{{ event.get_poster }}" alt="{{ event.name }}'s Poster" class="img-fluid w-100 rounded-3 d-none d-lg-block">
             </div>
             <div class="col-sm-12 col-lg-7">
-                <h1>{{ event.name }}</h1>
-                <p class="lead mb-0">🗓️ {{ event.date }}</p>
-                <p class="mb-0 lead">📍 {{ event.venue }}, {{ event.location }}</p>
-                <p class="mb-0 lead">🕛 {{ event.start_time }} - {{ event.end_time }}</p>
-                <hr class="text-muted">
-                <div>{{ event.description|linebreaks }}</div>
+                <h1 data-aos="fade-up" data-aos-delay="70" data-aos-duration="600">{{ event.name }}</h1>
+                <p class="lead mb-0" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">🗓️ {{ event.date }}</p>
+                <p class="mb-0 lead" data-aos="fade-up" data-aos-delay="150" data-aos-duration="600">📍 {{ event.venue }}, {{ event.location }}</p>
+                <p class="mb-0 lead" data-aos="fade-up" data-aos-delay="200" data-aos-duration="600">🕛 {{ event.start_time }} - {{ event.end_time }}</p>
+                <hr class="text-muted" data-aos="fade-up" data-aos-delay="250" data-aos-duration="600">
+                <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="600">{{ event.description|linebreaks }}</div>
                 {% if event.get_schedule %}
-                <a href="{{ event.view_schedule }}" class="hover-underline text-primary">View Full Schedule</a>
+                <a href="{{ event.view_schedule }}" class="hover-underline text-primary" data-aos="fade-up" data-aos-delay="350" data-aos-duration="600">View Full Schedule</a>
                 {% endif %}
                 {% if event.is_upcoming == 'Upcoming' %}
-                <a href="{{ event.get_ticket_link|safe }}" class="btn btn-primary w-100 btn-lg mt-4 d-none d-lg-block">Get Ticket</a>
+                <a href="{{ event.get_ticket_link|safe }}" class="btn btn-primary w-100 btn-lg mt-4 d-none d-lg-block" data-aos="fade-up" data-aos-delay="400" data-aos-duration="600">Get Ticket</a>
                 {% endif %}
             </div>
         </div>
