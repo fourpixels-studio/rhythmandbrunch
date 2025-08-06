@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<main class="container-fluid">
+    <div class="container px-1 py-5">
+        {% if success %}
+        <div class="row gy-4 mt-5 justify-content-evenly">
+            <div class="col-sm-12 col-lg-5">
+                <div class="text-center">
+                    <i style="font-size: 4rem; color: #43d199; background-color: #43d19823" class="rounded-circle p-3 fa-solid fa-circle-check" data-aos="zoom-in" data-aos-delay="50"></i>
+                    <h1 class="fw-400 mt-3" data-aos="fade-up" data-aos-delay="150">Success!</h1>
+                    <p class="mb-0 fw-300 mt-0 mb-4 lead" data-aos="fade-up" data-aos-delay="200">Your message has been received.<br>We will get back to you soon.</p>
+                    <a href="{% url 'index' %}" class="btn btn-outline-success px-4" data-aos="fade-up" data-aos-delay="250">Done</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="row gy-4 mt-4 justify-content-evenly">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-5">
+                        <h1 data-aos="fade-up" data-aos-delay="50">Contact Us</h1>
+                        <p data-aos="fade-up" data-aos-delay="70">We are happy to help! Leave a message below and we will get back to you soon!</p>
+                    </div>
+                </div>
+            </div>
+            <form class="col-sm-12 col-lg-6" data-aos="fade-up" data-aos-delay="100" action="{% url 'contact' %}" method="POST" onsubmit="showSpinner()">
+                {% csrf_token %}
+                <div class="mb-3 row g-3">
+                    <div class="col-sm-12 col-lg-6">
+                        <label for="first_name" class="form-label">First Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Jane" required>
+                    </div>
+                    <div class="col-sm-12 col-lg-6">
+                        <label for="last_name" class="form-label">Last Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Doe">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address <span class="text-danger">*</span></label>
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="beautiful@email.com" required>
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Comment or Message</label>
+                    <textarea class="form-control" rows="5" name="message" id="message" placeholder="Type here..."></textarea>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input hover" id="exampleCheck1" required>
+                    <label class="form-check-label" for="exampleCheck1">Agree to the terms and conditions</label>
+                </div>
+                <button id="submit-btn" type="submit" class="btn btn-primary px-4">
+                    <span id="submit-text">Send Message</span>
+                    <span id="spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                </button>
+            </form>
+            <div class="col-lg-6 d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://rhythmandbrunch.co.ke/wp-content/uploads/2024/09/IMG_5963-scaled.jpg" alt="" class="img-fluid rounded-3">
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}

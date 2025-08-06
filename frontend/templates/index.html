@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+{% include 'hero.html' %}
+<div class="bg-black py-4 scrolling-text-container">
+    <div class="scrolling-text-wrapper">
+        {% if latest_event.is_upcoming == "Upcoming" %}
+        <p class="h5 text-white my-0 scrolling-text">Upcoming Event {{ latest_event.date|date:"Y" }}: {{ latest_event.date|date:"M" }} {{ latest_event.date|date:"j" }}: {{ latest_event.venue }}</p>
+        <p class="h5 text-white my-0 scrolling-text">Upcoming Event {{ latest_event.date|date:"Y" }}: {{ latest_event.date|date:"M" }} {{ latest_event.date|date:"j" }}: {{ latest_event.venue }}</p>
+        <p class="h5 text-white my-0 scrolling-text">Upcoming Event {{ latest_event.date|date:"Y" }}: {{ latest_event.date|date:"M" }} {{ latest_event.date|date:"j" }}: {{ latest_event.venue }}</p>
+        {% else %}
+        <p class="h5 text-white my-0 scrolling-text">Kenya's BIGGEST Old School R&B Brunch</p>
+        <p class="h5 text-white my-0 scrolling-text">Kenya's BIGGEST Old School R&B Brunch</p>
+        <p class="h5 text-white my-0 scrolling-text">Kenya's BIGGEST Old School R&B Brunch</p>
+        {% endif %}
+    </div>
+</div>
+<div class="container px-3 my-5">
+    <div class="row justify-content-between gx-4 align-items-center gy-5 my-4">
+        <div class="col-sm-12 col-lg-4" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
+            <img src="https://rhythmandbrunch.co.ke/wp-content/uploads/2024/09/IMG_5942-scaled.jpg" alt="" class="img-fluid rounded-4 w-100">
+        </div>
+        <div class="col-sm-12 col-lg-7" data-aos="fade-up" data-aos-delay="150" data-aos-duration="600">
+            <h2 class="display-4" data-aos="fade-up" data-aos-delay="200" data-aos-duration="600">No Amapiano. <br>No Afrobeats. <br>Just nostalgic old-school R<span class="text-primary">&</span>B.</h2>
+            <p class="mt-4 mb-0 lead">Rhythm & Brunch is redefining Africa’s party scene with an electrifying 90s and 2000s R&B day party sing-along experience like no other. Immerse yourself in the iconic sounds of Destiny’s Child, Aaliyah, Usher, and B2K – the soundtrack of our youth. This isn’t just a party; it’s a nostalgic revival resonating deeply with millennials seeking something beyond the conventional nightlife.</p>
+        </div>
+    </div>
+    <div class="row justify-content-center align-items-center gy-4">
+        <div class="col-12">
+            <hr class="text-muted" data-aos="fade-up" data-aos-delay="50" data-aos-duration="600">
+        </div>
+        <div class="col-sm-12 col-lg-6">
+            <h2 class="display-2" data-aos="fade-up" data-aos-delay="70" data-aos-duration="600">Meet Our Guestar</h2>
+        </div>
+        <div class="col-sm-12 col-lg-6">
+            <img src="{% static 'img/joe.jpg' %}" alt="Joe Image" class="img-fluid rounded-3 w-100" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
+            <h3 class="display-6 mt-3 mb-0" data-aos="fade-up" data-aos-delay="150" data-aos-duration="600">Joe</h3>
+            <p class="lead text-muted mb-0" data-aos="fade-up" data-aos-delay="200" data-aos-duration="600">Joseph Lewis Thomas, known mononymously as Joe, is an American R&B singer</p>
+        </div>
+    </div>
+</div>
+<div class="container px-3 my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 mb-5">
+            <hr class="text-muted" data-aos="fade-up" data-aos-delay="50" data-aos-duration="600">
+        </div>
+        <div class="col-12 mb-5">
+            <h3 class="display-5 mb-4" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">Star Rundown</h3>
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                {% for performer in latest_event.get_schedule %}
+                {% if forloop.counter == 2 %}
+                <div class="accordion-item" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">
+                    <h2 class="accordion-header" id="panelsStayOpen-heading{{ performer.pk }}">
+                        <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ performer.pk }}" aria-expanded="false" aria-controls="panelsStayOpen-collapse{{ performer.pk }}">
+                            <p class="text-muted my-0 me-4">{{ performer.start_time|date:"g:ia" }}</p>
+                            <h5 class="my-0">{{ performer.performer }}</h5>
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapse{{ performer.pk }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading{{ performer.pk }}">
+                        <div class="accordion-body px-0">
+                            <div class="row justify-content-between g-3 align-items-center">
+                                <div class="col-sm-12 col-lg-2">
+                                    <img src="{{ performer.get_image }}" alt="{{ performer.performer }}'s Image" class="img-fluid w-100 rounded-1">
+                                </div>
+                                <div class="col-sm-12 col-lg-10">{{ performer.performance_description|safe|linebreaks }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="text-muted my-0" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">
+                {% else %}
+                <div class="accordion-item" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">
+                    <h2 class="accordion-header" id="panelsStayOpen-heading{{ performer.pk }}">
+                        <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ performer.pk }}" aria-expanded="false" aria-controls="panelsStayOpen-collapse{{ performer.pk }}">
+                            <p class="text-muted my-0 me-4">{{ performer.start_time|date:"g:ia" }}</p>
+                            <h5 class="my-0">{{ performer.performer }}</h5>
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapse{{ performer.pk }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading{{ performer.pk }}">
+                        <div class="accordion-body px-0">
+                            <div class="row justify-content-between g-3 align-items-center">
+                                <div class="col-sm-12 col-lg-2">
+                                    <img src="{{ performer.get_image }}" alt="{{ performer.performer }}'s Image" class="img-fluid w-100 rounded-1">
+                                </div>
+                                <div class="col-sm-12 col-lg-10">{{ performer.performance_description|safe|linebreaks }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="text-muted my-0" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00" data-aos-duration="600">
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-3 mb-5">
+            <a href="{{ latest_event.view_schedule }}" class="btn btn-outline-secondary w-100" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">View Full Schedule <i class="ms-2 fa-solid fa-arrow-right" data-aos="fade-right" data-aos-delay="400" data-aos-duration="600"></i> </a>
+        </div>
+    </div>
+</div>
+<div class="text-center mb-5 p-lg-5 py-5 event-cta-banner" style="background-image: url('{{ latest_event.get_poster }}');">
+    <div class="container px-3">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-lg-7">
+                <h3 class="display-6 text-white" data-aos="fade-in" data-aos-delay="100" data-aos-duration="600">GET THE TICKET NOW</h3>
+                <p class="text-white" data-aos="fade-up" data-aos-delay="150" data-aos-duration="600">
+                    Join the energetic crowd on the R&B concert floor with general admission tickets,
+                    allowing you to move freely and immerse yourself in the electrifying atmosphere.
+                </p>
+                <a href="{{ latest_event.get_url }}" class="btn btn-primary btn-lg px-4" data-aos="fade-right" data-aos-delay="200" data-aos-duration="600">
+                    GET TICKET <i class="ms-2 fa-solid fa-arrow-right" data-aos="fade-right" data-aos-delay="500" data-aos-duration="600"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container px-3 py-4 ">
+    <div class="row gy-4">
+        <div class="col-12">
+            <h4 class="display-5 mb-4" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">Past Events</h2>
+            <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="200">At Rhythm and Brunch, we are dedicated to creating unforgettable experiences for our guests. If you’ve ever been a part of one of our events, be sure to explore our gallery—you might just spot some amazing photos of yourself enjoying the moment and living your best life! Here, strangers become friends, bonded by shared lyrics and synchronized moves. It’s where old-school cool meets modern excitement, cultivating a movement that transcends the typical party scene.</p>
+        </div>
+        <div class="col-12">
+            <div class="d-flex flex-row gap-3 scrollable-images-container">
+                {% for event in events %}
+                <article class="col-8 col-lg-3">{% include "event_card.html" %}</article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container px-3">
+    <div class="row my-5">
+        <h4 class="display-6 mb-4">Beautiful People of Rhythm <span class="text-primary">&</span> Brunch</h4>
+        <div class="d-flex flex-row gap-3 scrollable-images-container">
+            <article class="col-8 col-lg-4" data-aos="fade-left" data-aos-delay="50" data-aos-duration="600">
+                <img src="https://rhythmandbrunch.co.ke/wp-content/uploads/2024/09/IMG_5963-scaled.jpg" alt="" class="img-fluid rounded-2">
+            </article>
+            <article class="col-8 col-lg-4" data-aos="fade-left" data-aos-delay="100" data-aos-duration="600">
+                <img src="https://rhythmandbrunch.co.ke/wp-content/uploads/2024/09/IMG_5951-scaled.jpg" alt="" class="img-fluid rounded-2">
+            </article>
+            <article class="col-8 col-lg-4" data-aos="fade-left" data-aos-delay="150" data-aos-duration="600">
+                <img src="https://rhythmandbrunch.co.ke/wp-content/uploads/2024/09/IMG_5944-scaled.jpg" alt="" class="img-fluid rounded-2">
+            </article>
+            <article class="col-8 col-lg-4" data-aos="fade-left" data-aos-delay="200" data-aos-duration="600">
+                <img src="https://rhythmandbrunch.co.ke/wp-content/uploads/2024/09/IMG_5963-scaled.jpg" alt="" class="img-fluid rounded-2">
+            </article>
+            <article class="col-8 col-lg-4" data-aos="fade-left" data-aos-delay="250" data-aos-duration="600">
+                <img src="https://rhythmandbrunch.co.ke/wp-content/uploads/2024/09/IMG_5958-1536x1024.jpg" alt="" class="img-fluid rounded-2">
+            </article>
+            <article class="col-8 col-lg-4" data-aos="fade-left" data-aos-delay="300" data-aos-duration="600">
+                <img src="https://rhythmandbrunch.co.ke/wp-content/uploads/2024/09/IMG_5960-1536x1024.jpg" alt="" class="img-fluid rounded-2">
+            </article>
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg-light px-4 my-5" data-aos="fade-up" data-aos-delay="50" data-aos-duration="600">
+    <div class="row justify-content-center px-lg-4 py-5">
+        <div class="col-12 text-center">
+            <h3 class="display-6 text-center" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">Can we taaalkkk..... for a minute?</h3>
+            <p data-aos="fade-up" data-aos-delay="150" data-aos-duration="600">Have any questions or information you want to gather? Reach out to us and ask away.</p>
+            <a href="{% url 'contact' %}" class="btn btn-secondary btn-lg px-4" data-aos="fade-up" data-aos-delay="200" data-aos-duration="600">Contact Us</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% load static %}
+<header class="mt-5 pt-5 container px-3">
+    <div class="row justify-content-center py-5 mb-5">
+        <div class="col-sm-12 col-lg-8 ms-lg-5 text-center">
+            <h1 class="display-1 fs-primary" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">Nairobi's</h1>
+            <h1 class="display-1 fs-primary" data-aos="fade-up" data-aos-delay="150" data-aos-duration="600">Ultimate</h1>
+            <h1 class="display-1 fs-primary" data-aos="fade-up" data-aos-delay="200" data-aos-duration="600">R<span class="text-primary">&</span>B Party</h1>
+        </div>
+        <div class="col-12">
+            <div class="row justify-content-center mt-4">
+                <div class="col-sm-10 col-md-6 col-lg-4">
+                    <div class="d-flex flex-row align-items-center justify-content-evenly" data-aos="fade-up" data-aos-delay="250" data-aos-duration="600">
+                        <img src="{% static 'img/arrow.svg' %}" style="transform: rotate(5deg); width: 100px; margin-right: -.8rem" alt="Left Arrow" />
+                        <a href="{{ latest_event.ticket_link|safe }}" target="_blank" class="btn btn-primary btn-lg w-100">Get Ticket</a>
+                        <img src="{% static 'img/arrow.svg' %}" style="transform: scaleX(-1) rotate(20deg); width: 100px; margin-left: -.8rem" alt="Right Arrow" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

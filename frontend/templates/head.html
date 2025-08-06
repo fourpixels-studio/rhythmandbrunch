@@ -1,0 +1,96 @@
+{% load static %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#fff" />
+
+<!-- Meta Tags -->
+<title>{{ title_tag }} — Rhythm & Brunch</title>
+<meta name="author" content="Rhythm & Brunch" />
+<meta name="description" content="{{ meta_description }}" />
+<meta name="keywords" content="{{ meta_keywords }}" />
+{% if meta_thumbnail %}
+<meta name="image" content="https://rythmandbrunch.com{{ meta_thumbnail }}">
+{% elif square_thumbnail %}
+<meta name="image" content="https://rythmandbrunch.com{{ square_thumbnail }}">
+{% else %}
+<meta name="image" content="https://rythmandbrunch.com{% static 'rythmandbrunch_meta_thumbnail.jpg' %}">
+{% endif %}
+<meta name="robots" content="index, follow">
+{% if meta_url %}
+<meta property="url" content="{{ meta_url }}">
+{% else %}
+<meta property="url" content="https://www.rythmandbrunch.com">
+{% endif %}
+
+<!-- Facebook Meta Tags -->
+<meta property="og:title" content="{{ title_tag }} — Rhythm & Brunch">
+<meta property="og:locale" content="en_EU">
+<meta property="og:type" content="website">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:keywords" content="{{ meta_keywords }}">
+<meta property="og:site_name" content="Rhythm & Brunch">
+<meta property="og:author" content="Rhythm & Brunch">
+<meta property="og:robots" content="index, follow">
+{% if meta_thumbnail %}
+<meta property="og:image" content="https://rythmandbrunch.com{{ meta_thumbnail }}">
+{% elif square_thumbnail %}
+<meta property="og:image" content="https://rythmandbrunch.comsquare_thumbnail meta_thumbnail }}">
+{% else %}
+<meta property="og:image" content="https://rythmandbrunch.com{% static 'rythmandbrunch_meta_thumbnail.jpg' %}">
+{% endif %}
+{% if meta_url %}
+<meta property="og:url" content="{{ meta_url }}">
+{% else %}
+<meta property="og:url" content="https://www.rythmandbrunch.com">
+{% endif %}
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ meta_description }}">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:title" content="{{ title_tag }} — Rhythm & Brunch">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="{{ meta_description }}">
+{% if meta_thumbnail %}
+<meta name="twitter:image" content="https://rythmandbrunch.com{{ meta_thumbnail }}">
+{% elif square_thumbnail %}
+<meta name="twitter:image" content="https://rythmandbrunch.square_thumbnailm{{ meta_thumbnail }}">
+{% else %}
+<meta name="twitter:image" content="https://rythmandbrunch.com{% static 'rythmandbrunch_meta_thumbnail.jpg' %}">
+{% endif %}
+<meta name="twitter:image:width" content="1200">
+<meta name="twitter:image:height" content="630">
+<meta name="twitter:site" content="www.rythmandbrunch.com">
+<meta name="twitter:creator" content="@rythmandbrunch">
+{% if meta_url %}
+<meta property="twitter:url" content="{{ meta_url }}">
+{% else %}
+<meta property="twitter:url" content="https://www.rythmandbrunch.com">
+{% endif %}
+
+<!-- LinkedIn Meta Tags -->
+<meta property="linkedin:site" content="https://www.linkedin.com/company/rythmandbrunch/">
+
+<!-- Favicons Start -->
+<link rel="icon" type="image/icon" href="{% static 'favicon/favicon.ico' %}" />
+<link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}" />
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}" />
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}" />
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/android-chrome-512x512.png' %}" />
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/android-chrome-192x192.png' %}" />
+<!-- Favicons End -->
+
+<!-- Manifest -->
+<link rel="manifest" href="{% static 'favicon/site.webmanifest' %}" />
+
+<!-- Fontawesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- css -->
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+<!-- bootstrap -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<script defer src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
