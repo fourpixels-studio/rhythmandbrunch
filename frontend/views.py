@@ -11,6 +11,8 @@ def index(request):
         "events": events,
         "title_tag": "Home",
         "latest_event": latest_event,
+        "meta_keywords": "rhythm, brunch, 90s rnb, 2000s rnb, culture",
+        "meta_description": "Welcome to Rhythm & Brunch, where we embrace the rich 90s and 2000s R&B culture. Join us as we celebrate this dynamic genre with passion and immerse ourselves in captivating rhythms, thought-provoking lyrics and vibrant community.",
     }
     return render(request, "index.html", context)
 
