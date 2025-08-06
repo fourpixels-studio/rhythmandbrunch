@@ -1,0 +1,1 @@
+document.getElementById("footer-year").innerHTML = `&#169; ${new Date().getFullYear()} Rhythm & Brunch, All Rights Reserved. Website by <a href="https://fourpixels.studio/" target="_blank" class="hover-underline text-primary">Four Pixels Studio</a>`
