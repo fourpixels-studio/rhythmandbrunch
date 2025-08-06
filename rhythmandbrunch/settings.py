@@ -122,8 +122,8 @@ USE_TZ = True
 STATIC_URL = "/static/"
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'frontend/media')
-STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -154,7 +154,7 @@ RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
 RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
 # recaptcha keys
 
-SITE_DOMAIN = "https://www.rythmandbrunch.com/"
+SITE_DOMAIN = "https://www.rythmandbrunch.co.ke/"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.rythmandbrunch.com'
@@ -171,6 +171,6 @@ PESAPAL_CONSUMER_SECRET = os.environ.get('PESAPAL_CONSUMER_SECRET')
 DEMO_PESAPAL_CONSUMER_KEY = os.environ.get('DEMO_PESAPAL_CONSUMER_KEY')
 DEMO_PESAPAL_CONSUMER_SECRET = os.environ.get('DEMO_PESAPAL_CONSUMER_SECRET')
 
-PUBLIC_URL = "https://www.rythmandbrunch.com"
+PUBLIC_URL = "https://www.rythmandbrunch.co.ke"
 
 SITE_ID = 1
