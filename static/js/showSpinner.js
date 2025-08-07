@@ -8,7 +8,7 @@ function showSpinner() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    let loader = document.getElementById("loader");
+    let loader = document.getElementById("loading-animation");
     window.onload = function () {
         loader.style.display = "none";
     };
