@@ -11,8 +11,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 
 class Event(models.Model):
     name = models.CharField(max_length=200, null=True, blank=True)
-    poster = models.ImageField(
-        upload_to="event_posters/", blank=True, null=True)
+    poster = models.ImageField(upload_to="event_posters/", blank=True, null=True)
     poster_url = models.TextField(null=True, blank=True)
     date = models.DateField(null=True, blank=True)
     start_time = models.TimeField(null=True, blank=True)
@@ -26,20 +25,14 @@ class Event(models.Model):
     likes = models.CharField(default=0, max_length=9, null=True, blank=True)
     google_maps_link = models.TextField(null=True, blank=True)
     ticket_link = models.TextField(null=True, blank=True)
-    meta_thumbnail = ResizedImageField(size=[1200, 630], crop=[
-                                       'middle', 'center'], quality=75, upload_to='thumbnails/', blank=True, null=True)
-    small_poster = ResizedImageField(
-        quality=75, upload_to='thumbnails/', blank=True, null=True)
+    meta_thumbnail = ResizedImageField(size=[1200, 630], crop=['middle', 'center'], quality=75, upload_to='thumbnails/', blank=True, null=True)
+    small_poster = ResizedImageField(quality=75, upload_to='thumbnails/', blank=True, null=True)
     online = models.BooleanField(default=False)
     delete = models.BooleanField(default=False)
     created_at = models.DateTimeField(default=timezone.now)
     published_at = models.DateTimeField(blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)
-    hit_count_generic = GenericRelation(
-        HitCount, object_id_field="object_pk", related_query_name="hit_count_generic_relation")
-
-    class Meta:
-        ordering = ['-date']
+    hit_count_generic = GenericRelation(HitCount, object_id_field="object_pk", related_query_name="hit_count_generic_relation")
 
     @property
     def get_share_link(self):
@@ -70,12 +63,10 @@ class Event(models.Model):
             self.slug = slugify(self.name)
         super(Event, self).save(*args, **kwargs)
         if self.poster and (not self.meta_thumbnail or self.meta_thumbnail.name != f"{self.poster.name}"):
-            self.meta_thumbnail.save(
-                f"{self.poster.name}", self.poster, save=False)
+            self.meta_thumbnail.save(f"{self.poster.name}", self.poster, save=False)
             super(Event, self).save(update_fields=['meta_thumbnail'])
         if self.poster and (not self.small_poster or self.small_poster.name != f"{self.poster.name}"):
-            self.small_poster.save(
-                f"{self.poster.name}", self.poster, save=False)
+            self.small_poster.save(f"{self.poster.name}", self.poster, save=False)
             super(Event, self).save(update_fields=['small_poster'])
 
     @property
@@ -135,6 +126,7 @@ class TicketCategory(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     category_name = models.CharField(max_length=50, blank=True, unique=False)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    perks = models.TextField(blank=True)
     admits = models.IntegerField(default=1)
     sold_out = models.BooleanField(default=False)
     ticket_link = models.TextField(blank=True, null=True)
@@ -149,12 +141,9 @@ class EventSchedule(models.Model):
     performance_description = models.TextField(blank=True, null=True)
     start_time = models.DateTimeField(blank=True, null=True)
     end_time = models.DateTimeField(blank=True, null=True)
-    image = models.ImageField(
-        upload_to="schedule_images/", blank=True, null=True)
-    thumbnail = ResizedImageField(
-        quality=75, upload_to='thumbnails/', blank=True, null=True)
-    size_small = ResizedImageField(
-        size=[876, 876], quality=75, upload_to='thumbnails/', blank=True, null=True)
+    image = models.ImageField(upload_to="schedule_images/", blank=True, null=True)
+    thumbnail = ResizedImageField(quality=75, upload_to='thumbnails/', blank=True, null=True)
+    size_small = ResizedImageField(size=[876, 876], quality=75, upload_to='thumbnails/', blank=True, null=True)
 
     class Meta:
         verbose_name = "Schedule"
