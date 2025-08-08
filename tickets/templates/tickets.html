@@ -47,6 +47,13 @@
                                 {% endif %}
                             </div>
                         </div>
+                        {% if ticket.perks %}
+                        <div class="col-12">
+                            <div class="border-top border-secondary my-3 px-2"></div>
+                            <small class="fw-bold text-white">{{ ticket.category_name }} Experience</small>
+                            <div class="my-0 text-light">{{ ticket.perks|linebreaks }}</div>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
                 {% else %}
@@ -78,6 +85,13 @@
                                 {% endif %}
                             </div>
                         </div>
+                        {% if ticket.perks %}
+                        <div class="col-12">
+                            <div class="border-top border-secondary my-3 px-2"></div>
+                            <small class="fw-bold text-white">{{ ticket.category_name }} Experience</small>
+                            {{ ticket.perks|linebreaks }}
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
                 {% endif %}
