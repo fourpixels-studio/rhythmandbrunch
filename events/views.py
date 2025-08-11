@@ -1,5 +1,6 @@
 from .models import Event
 from django.shortcuts import render
+from utils.hitcount_utils import update_views
 
 
 def event_detail(request, slug):
@@ -8,6 +9,7 @@ def event_detail(request, slug):
         "event": event,
         "title_tag": f"{event.name} Event",
     }
+    update_views(request, event)
     return render(request, "event_detail.html", context)
 
 
